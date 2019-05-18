@@ -74,6 +74,22 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
     3. Return the updated array.
 */
 
+removeDuplicates = (workplaceAccidents) => //this is the same as function removeDuplicates(workplaceAccidents) {}
+  workplaceAccidents.filter((element, index) => { //this is the same as workplaceAccidents.filter(element, index) {}
+  return workplaceAccidents.indexOf(element) == index;
+})
+console.log(removeDuplicates(workplaceAccidents));
+
+//The above could be rewritten as:
+
+// function removeDuplicates(workplaceAccidents) {
+//   let newArr = [...new Set(workplaceAccidents)];
+//   newArr = workplaceAccidents;
+//   return workplaceAccidents;
+// }
+
+// console.log(removeDuplicates(workplaceAccidents));
+
 ////////// PROBLEM 3 //////////
 
 // Do not edit the code below.
@@ -140,8 +156,15 @@ var myCar = {
     3. Change atFaultForAccident from true to false.
 */
 
-//Code Here
+function recordCleaner() {
+  myCar.accidents.forEach(element => {
+    element.atFaultForAccident = false;
+  })
+};
 
+recordCleaner(myCar);
+
+console.log(myCar);
 
 
 ////////// PROBLEM 5 //////////
@@ -159,6 +182,17 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
     4. Return the modified numsArr.
 */
 
-//Code Here
+function looper(numsArr) {
+  for(i = 0; i < numsArr.length; i++){
+    for(idx = 0; idx < numsArr[i].length; idx++) {
+      if(numsArr[i][idx] % 2 === 0) 
+        numsArr[i][idx] = 'even';
+        else
+        numsArr[i][idx] = 'odd';
+    }
+  }
+  return numsArr;
+}
 
+console.log(looper(numsArr));
 
