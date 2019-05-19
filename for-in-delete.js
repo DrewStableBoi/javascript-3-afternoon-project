@@ -11,25 +11,25 @@
   In the example below, we are accessing the property values. Uncomment the code below, run it and look at what prints in the console.
 */
 
-// var values = {
-//   one: 'These',
-//   two: ' are',
-//   three: ' the',
-//   four: ' property',
-//   five: ' values.'
-// } 
+var values = {
+  one: 'These',
+  two: ' are',
+  three: ' the',
+  four: ' property',
+  five: ' values.'
+} 
 
-// for(var key in values) {
-//   console.log(values[key])
-// }
+for(var key in values) {
+  console.log(values[key])
+}
 
 /*
   In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
 */
 
-// for(var key in values) {
-//   console.log(key)
-// }
+for(var key in values) {
+  console.log(key)
+}
 
 
 
@@ -39,11 +39,25 @@
   Inside the function showValues, write a for in loop that concatenates each of the property values and returns the concatenated string.
 */
 
+// function showValues( values ) {
+//   for(var i in values) {
+//     return Object.values(values).join(" ").toString();
+//   }
+// }
+
+// console.log(showValues(values));
+
+//I don't know why, but my above way doesn't work with the spec runner. This one does:
+
 function showValues( obj ) {
-  //Code Here
+  let arr = []; 
+  for(var key in obj) {
+    arr.push(obj[key])
+  }
+  return arr.join("");
 }
 
-
+console.log(showValues(values));
 
 ////////// PROBLEM 2 //////////
 
@@ -53,19 +67,29 @@ function showValues( obj ) {
   Return the updated object.
 */
 
-//Code Here
-
+let greaterThan10 = (obj) => {
+    for(var key in obj) {
+      if(obj[key] > 10) 
+      {obj[key] = 0;}
+    }
+    return obj;
+}
 
 
 ////////// PROBLEM 3 //////////
 
 /*
   Write a function called double that takes in an object.
-  Write a for in loop that loops over the object and changes every value to be itself multipled by 2.
+  Write a for in loop that loops over the object and changes every value to be itself multiplied by 2.
   Return the updated object.
 */
 
-//Code Here
+let double = (obj) => {
+  for(var poop in obj) {
+    obj[poop] = obj[poop] * 2;
+  }
+  return obj;
+}
 
 
 
@@ -79,9 +103,15 @@ function showValues( obj ) {
   By the end of the for in loop, you should have a sentence, return that sentence.
 */
 
-//Code Here
-
-
+let secrets = (obj) => {
+  let emptyStr = '';
+  for(var dump in obj) {
+    if(dump.startsWith('sh')) {
+      emptyStr += obj[dump];
+    }
+  }
+  return emptyStr;
+}
 
 /* 
   Sometimes it's needed to delete object properties. 
@@ -110,7 +140,15 @@ function showValues( obj ) {
   Delete the property password and return the object.
 */
 
-//Code Here
+let removePassword = (obj) => {
+  for (var key in obj) {
+  if(key === 'password') {
+    delete obj[key];
+    }  
+  }
+  return obj;
+}
+
 
 
 
@@ -129,9 +167,16 @@ var deleteTheBigNumbers = {
   Write a for in loop that deletes every property from the object deleteTheBigNumbers whose value is greater than 100.
 */
 
-//Code Here
+var deleteThis = (obj) => {
+  for(var dump in obj) {
+    if(obj[dump] > 100) {
+      delete obj[dump];
+    }
+  }
+  return obj;
+}
 
-
+console.log(deleteThis(deleteTheBigNumbers));
 
 ////////// PROBLEM 7 //////////
 
@@ -142,9 +187,14 @@ var deleteTheBigNumbers = {
   Return the updated object.
 */
 
-//Code Here
-
-
+let startsWithK = (obj) => {
+    for(var key in obj) {
+      if(key.startsWith("k")) {
+        delete obj[key];
+      }
+    }
+  return obj;
+}
 
 ////////// PROBLEM 8 //////////
 
@@ -157,6 +207,12 @@ var deleteTheBigNumbers = {
   (hint: the method includes() may be of use...)
 */
 
-//Code Here
-
+let hiddenTreasure = (obj) => {
+  for(var key in obj) {
+    if(!obj[key].includes('treasure')) {
+      delete obj[key];
+    }
+  }
+  return obj;
+}
 
